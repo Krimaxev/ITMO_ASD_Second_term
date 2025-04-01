@@ -36,7 +36,7 @@ if __name__ == "__main__":
     else:
         check = check_input_data_t10(FILE_INPUT)
         if check:
-            result = is_bst(num, nodes)
+            result = bst(num, nodes)
             if result:
                 output_data_t6(FILE_OUTPUT, 'YES')
             else:

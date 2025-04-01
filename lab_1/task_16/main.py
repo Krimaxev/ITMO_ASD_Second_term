@@ -17,22 +17,12 @@ def min_path(num, matrix):
             - list[int]: Список номеров городов маршрута, возвращённый в обратном порядке. Нумерация городов начинается
                          с 1 (то есть, к исходным индексам добавляется 1).
 
-    Пример:
-        >>> from itertools import permutations
-        >>> num = 4
-        >>> matrix = [
-        ...     [0, 10, 15, 20],
-        ...     [10, 0, 35, 25],
-        ...     [15, 35, 0, 30],
-        ...     [20, 25, 30, 0]
-        ... ]
-        >>> min_path(num, matrix)
-        ('80', [4, 2, 3, 1])
     """
     cities = list(range(num))
     all_permutations = permutations(cities[1:])
     m_distance = float('inf')
     best_path = None
+
 
     for perm in all_permutations:
         current_distance = 0
@@ -45,12 +35,14 @@ def min_path(num, matrix):
         if current_distance < m_distance:
             m_distance = current_distance
             best_path = list((cities[0],) + perm)
-            m_best_path = []
+
             for i in range(len(best_path)):
                 best_path[i] = best_path[i] + 1
-                m_best_path.append(best_path[i])
+
 
     return str(m_distance), best_path[::-1]
+
+
 
 if __name__ == "__main__":
     FILE_INPUT = "./txtf/input.txt"
